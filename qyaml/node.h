@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QTextStream>
+#include <QFile>
 
 #include <string>
 
@@ -32,11 +33,13 @@ struct convert<QString> {
 
 void operator >> ( const Node node, QString q ) ;
 void operator << ( Node node, const QString q );
-void operator >> ( QTextStream stream, const Node& node );
-void operator << ( QTextStream stream, const Node& node );
+//void operator >> ( QTextStream stream, const Node& node );
+//void operator << ( QTextStream stream, const Node& node );
 
 Node LoadFile( const QString& filename );
-
+void SaveFile( const QString& filename,
+               const Node& node,
+               QIODevice::OpenMode flags = QIODevice::ReadWrite );
 } // end of namespace YAML
 
 #endif // NODE_H

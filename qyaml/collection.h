@@ -31,7 +31,7 @@ struct convert<QList<T> > {
             return false;
         }
 
-        std::list<T> slist = node.as<std::list<T >>();
+        std::list<T> slist = node.as<std::list<T>>();
         rhs = QList<T>::fromStdList( slist );
 
         return true;
@@ -39,7 +39,7 @@ struct convert<QList<T> > {
 };
 
 template<class T>
-void operator >> ( const Node node, QList<T> q ) {
+inline void operator >> ( const Node& node, QList<T>& q ) {
     std::list<T> slist;
     slist = node.as<std::list<T>>();
     q = QList<T>::fromStdList( slist );
@@ -69,7 +69,7 @@ struct convert<QMap<K, V> > {
 };
 
 template<class K, class V>
-void operator >> ( const Node node, QMap<K, V> q ) {
+inline void operator >> ( const Node& node, QMap<K, V>& q ) {
     std::map<K, V> smap;
     smap = node.as<std::map<K, V>>();
     q = QMap<K, V>( smap );
@@ -100,20 +100,26 @@ struct convert<QVector<T> > {
 };
 
 template<class T>
-void operator >> ( const Node node, QVector<T> q ) {
+inline void operator >> ( const Node& node, QVector<T>& q ) {
     std::vector<T> svector;
     svector = node.as<std::vector<T>>();
     q = QVector<T>::fromStdVector( svector );
 }
 
 template<class T>
-Emitter& operator<<( Emitter& emitter, const QList<T> v );
+inline Emitter& operator<<( Emitter& emitter, const QList<T> v ) {
+    return emitter.Write( v.toStdList() );
+}
 
 template<class K, class V>
-Emitter& operator<<( Emitter& emitter, const QMap<K, V> v );
+inline Emitter& operator<<( Emitter& emitter, const QMap<K, V> v ) {
+    return emitter.Write( v.toStdMap() );
+}
 
 template<class T>
-Emitter& operator<<( Emitter& emitter, const QVector<T> v );
+inline Emitter& operator<<( Emitter& emitter, const QVector<T> v ) {
+    return emitter.Write( v.toStdVector() );
+}
 
 
 } // end of namespace YAML
