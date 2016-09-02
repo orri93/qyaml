@@ -29,17 +29,19 @@ level QMap system. Only three lines of code are required to save these to the ya
 document.
 
 To create yaml document just:
+```cpp
     YAML::Node root;                    // create root node.
     root["eastings"] = keys;            // add the list
     root["northings"] = mRefSquareData; // add the map
-
+```
 To read just:
+```cpp
     YAML::Node root = YAML::LoadFile( filename );   // load from file
     QList<int> eastings;                            // create empty list.
     root["eastings"] >> eastings;                   // copy list from document
     QMap<int, QMap< int, QString>> northings;       // create empty map
     root["northings"] >> northings;                 // copy map from document
-
+```
 yaml-cpp will handle the multi-level map.
 
 Example YAML file
