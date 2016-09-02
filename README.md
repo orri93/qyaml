@@ -1,5 +1,5 @@
 qyaml is a small collection of YAML:: extensions that allow some
-Qt types to be used directly with yaml-cpp. Noatably QString,
+Qt types to be used directly with yaml-cpp. Notably QString,
 QList, QMap and QVector.
 
 This is by no means complete, it is just a few things that I needed
