@@ -16,4 +16,5 @@ HEADERS += \
 unix|win32: LIBS += -lyaml-cpp
 
 DISTFILES += \
-    qyaml.pri
+    qyaml.pri \
+    $$PWD/../README.md
