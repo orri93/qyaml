@@ -24,7 +24,7 @@ There are nine files at present.
 These could probably be placed all in one file or a header/source pair but at some
 point I might write some more for these so I left all of the files in.
 
-In the example below mRefSquareData is a **QMap<int, QMap<int, QString>>**, ie a two
+In the example below mRefSquareData is a 'QMap<int, QMap<int, QString>>', ie a two
 level QMap system. Only three lines of code are required to save these to the yaml
 document.
 
