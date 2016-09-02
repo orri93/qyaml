@@ -24,7 +24,7 @@ There are nine files at present.
 These could probably be placed all in one file or a header/source pair but at some
 point I might write some more for these so I left all of the files in.
 
-In the example below mRefSquareData is a 'QMap<int, QMap<int, QString>>', ie a two
+In the example below mRefSquareData is a `QMap<int, QMap<int, QString>>`, ie a two
 level QMap system. Only three lines of code are required to save these to the yaml
 document.
 
@@ -44,7 +44,7 @@ yaml-cpp will handle the multi-level map.
 
 Example YAML file
 =================
-
+```yaml
     eastings:
         - 390000
         - 400000
@@ -75,11 +75,12 @@ Example YAML file
             1200000: HP60
             1210000: HP61
             1220000: HP62
-
+```
 Example Source Code
 ===================
 Save file:
 ==========
+```cpp
     #include <yaml-cpp/yaml.h>
     #include "qyaml.h"
 
@@ -89,10 +90,11 @@ Save file:
     root["northings"] = mRefSquareData;
 
     YAML::SaveFile("config.yaml", root, QFile::WriteOnly | QFile::Text | QFile::Truncate);
-
+```
 
 Load File:
 ==========
+```cpp
     #include <yaml-cpp/yaml.h>
     #include "yaml.h"
 
@@ -111,3 +113,4 @@ Load File:
         mRefSquareData = northings;
 
     }
+```
