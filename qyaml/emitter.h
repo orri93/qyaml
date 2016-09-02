@@ -17,8 +17,11 @@ namespace YAML {
 /*!
  * \brief Emitter operator << overload for QString
  */
-Emitter& operator<<( Emitter& emitter, QString v );
+inline Emitter& operator<<( Emitter& emitter, QString v ) {
+    return emitter.Write( v.toStdString() );
+}
 
 } // end namespace YAML
+
 
 #endif // EMITTER_H
