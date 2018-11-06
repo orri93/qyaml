@@ -5,12 +5,14 @@
 #include <QMap>
 #include <QList>
 #include <QVector>
+#include <QStringList>
 
 #include <map>
 #include <vector>
 #include <list>
 
 #include "yaml-cpp/yaml.h"
+#include "node.h"
 
 namespace YAML {
 
@@ -75,6 +77,7 @@ inline void operator >> ( const Node& node, QMap<K, V>& q ) {
     q = QMap<K, V>( smap );
 }
 
+
 //template <>
 template <class T>
 struct convert<QVector<T> > {
@@ -108,17 +111,23 @@ inline void operator >> ( const Node& node, QVector<T>& q ) {
 
 template<class T>
 inline Emitter& operator<<( Emitter& emitter, const QList<T> v ) {
-    return emitter.Write( v.toStdList() );
+    Node node;
+    node = v;
+    return emitter << node;
 }
 
 template<class K, class V>
 inline Emitter& operator<<( Emitter& emitter, const QMap<K, V> v ) {
-    return emitter.Write( v.toStdMap() );
+    Node node;
+    node = v;
+    return emitter << node;
 }
 
 template<class T>
 inline Emitter& operator<<( Emitter& emitter, const QVector<T> v ) {
-    return emitter.Write( v.toStdVector() );
+    Node node;
+    node = v;
+    return emitter << node;
 }
 
 
