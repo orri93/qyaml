@@ -103,27 +103,27 @@ operator>>(const Node& node, QFont& q)
 void
 operator<<(Node& node, const QFont& q)
 {
-  node["family"] =  q.family();
-  node["bold"] =  q.bold();
-  node["capitalization"] =  q.capitalization();
-  node["fixedpitch"] =  q.fixedPitch();
-  node["hinting preference"] =  q.hintingPreference();
-  node["italic"] =  q.italic();
-  node["kerning"] =  q.kerning();
-  node["letter spacing"] =  q.letterSpacing();
-  node["letter spacing type"] =  q.letterSpacingType();
-  node["overline"] =  q.overline();
+  node["family"] = q.family();
+  node["bold"] = q.bold();
+  node["capitalization"] = int(q.capitalization());
+  node["fixedpitch"] = q.fixedPitch();
+  node["hinting preference"] = int(q.hintingPreference());
+  node["italic"] = q.italic();
+  node["kerning"] = q.kerning();
+  node["letter spacing"] = q.letterSpacing();
+  node["letter spacing type"] = int(q.letterSpacingType());
+  node["overline"] = q.overline();
   // not recommended to use pixelSize()
-  node["point size"] =  q.pointSize();
-  node["stretch"] =  q.stretch();
-  node["strikeout"] =  q.strikeOut();
-  node["style"] =  q.style();
-  node["style hint"] =  q.styleHint();
-  node["style name"] =  q.styleName();
-  node["style strategy"] =  q.styleStrategy();
-  node["underline"] =  q.underline();
-  node["weight"] =  q.weight();
-  node["word spacing"] =  q.wordSpacing();
+  node["point size"] = q.pointSize();
+  node["stretch"] = q.stretch();
+  node["strikeout"] = q.strikeOut();
+  node["style"] = int(q.style());
+  node["style hint"] = int(q.styleHint());
+  node["style name"] = q.styleName();
+  node["style strategy"] = int(q.styleStrategy());
+  node["underline"] = q.underline();
+  node["weight"] = int(q.weight());
+  node["word spacing"] = q.wordSpacing();
 }
 
 /*!

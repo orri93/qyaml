@@ -131,24 +131,24 @@ struct convert<QFont>
     Node node;
     node["family"] = rhs.family();
     node["bold"] = rhs.bold();
-    node["capitalization"] = rhs.capitalization();
+    node["capitalization"] = int(rhs.capitalization());
     node["fixedpitch"] = rhs.fixedPitch();
-    node["hinting preference"] = rhs.hintingPreference();
+    node["hinting preference"] = int(rhs.hintingPreference());
     node["italic"] = rhs.italic();
     node["kerning"] = rhs.kerning();
     node["letter spacing"] = rhs.letterSpacing();
-    node["letter spacing type"] = rhs.letterSpacingType();
+    node["letter spacing type"] = int(rhs.letterSpacingType());
     node["overline"] = rhs.overline();
     // not recommended to use pixelSize()
     node["point size"] = rhs.pointSize();
     node["stretch"] = rhs.stretch();
     node["strikeout"] = rhs.strikeOut();
-    node["style"] = rhs.style();
-    node["style hint"] = rhs.styleHint();
+    node["style"] = int(rhs.style());
+    node["style hint"] = int(rhs.styleHint());
     node["style name"] = rhs.styleName();
-    node["style strategy"] = rhs.styleStrategy();
+    node["style strategy"] = int(rhs.styleStrategy());
     node["underline"] = rhs.underline();
-    node["weight"] = rhs.weight();
+    node["weight"] = int(rhs.weight());
     node["word spacing"] = rhs.wordSpacing();
 
     return node;

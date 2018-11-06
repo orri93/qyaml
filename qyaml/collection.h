@@ -7,6 +7,7 @@
 #include <QVector>
 #include <QSet>
 #include <QStringList>
+#include <QFont>
 
 #include <map>
 #include <vector>
