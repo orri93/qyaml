@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QList>
 #include <QVector>
+#include <QSet>
 #include <QStringList>
 
 #include <map>
@@ -109,26 +110,36 @@ inline void operator >> ( const Node& node, QVector<T>& q ) {
     q = QVector<T>::fromStdVector( svector );
 }
 
+//template <>
+template <class T>
+struct convert<QSet<T> > {
+    static Node encode( const QSet<T>& rhs ) {
+        Node node( NodeType::Sequence );
+
+        std::list<T> slist = rhs.toList();
+        node = slist;
+
+        return node;
+    }
+
+    static bool decode( const Node& node, QSet<T>& rhs ) {
+        if ( !node.IsSequence() ) {
+            return false;
+        }
+
+        std::list<T> slist = node.as<std::list<T>>();
+        rhs = QSet<T>::fromList(QList<T>::fromStdList(slist));
+
+        return true;
+    }
+};
+
 template<class T>
-inline Emitter& operator<<( Emitter& emitter, const QList<T> v ) {
-    Node node;
-    node = v;
-    return emitter << node;
+inline void operator >> ( const Node& node, QSet<T>& q ) {
+    std::list<T> slist = node.as<std::list<T>>();
+    q = QSet<T>::fromList(QList<T>::fromStdList(slist));
 }
 
-template<class K, class V>
-inline Emitter& operator<<( Emitter& emitter, const QMap<K, V> v ) {
-    Node node;
-    node = v;
-    return emitter << node;
-}
-
-template<class T>
-inline Emitter& operator<<( Emitter& emitter, const QVector<T> v ) {
-    Node node;
-    node = v;
-    return emitter << node;
-}
 
 
 } // end of namespace YAML

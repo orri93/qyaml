@@ -24,6 +24,36 @@ There are nine files at present.
 These could probably be placed all in one file or a header/source pair but at some
 point I might write some more for these so I left all of the files in.
 
+So far the following Qt classes are covered:
+
+    * QString
+      Creates a standard YAML string value.
+    * QColor
+      Creates a standard YAML map of values.
+    * QFont
+      Creates a standard YAML map of values.
+    * QByteArray
+      Creates a standard YAML string value.
+    * QList
+      Creates a standard YAML list.
+    * QVector
+      Creates a standard YAML list.
+    * QMap
+      Creates a standard YAML map.
+    * QSet
+      Creates a standard YAML list.
+      
+Emitter << operator has been overloaded for all of these classes so 
+```cpp
+    YAML::Emitter emitter;
+    emitter << YAML::Key << "key";
+    emitter << YAML::Value << "value";
+```
+should work correctly.
+
+Usage:
+======
+
 In the example below mRefSquareData is a `QMap<int, QMap<int, QString>>`, ie a two
 level QMap system. Only three lines of code are required to save these to the yaml
 document.

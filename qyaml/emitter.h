@@ -11,6 +11,28 @@
 
 namespace YAML {
 
+template<class T>
+inline Emitter& operator<<( Emitter& emitter, const QList<T> v ) {
+    Node node;
+    node = v;
+    return emitter << node;
+}
+
+template<class K, class V>
+inline Emitter& operator<<( Emitter& emitter, const QMap<K, V> v ) {
+    Node node;
+    node = v;
+    return emitter << node;
+}
+
+template<class T>
+inline Emitter& operator<<( Emitter& emitter, const QVector<T> v ) {
+    Node node;
+    node = v;
+    return emitter << node;
+}
+
+
 /*!
     \brief Emitter operator << overload for QString
 */
