@@ -1,5 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    qyaml \
-    qyamltest
+    qyaml-cpp \
+    qyaml-cpp-test
+
+qyaml-cpp.subdir = qyaml-cpp

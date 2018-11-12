@@ -42,14 +42,43 @@ So far the following Qt classes are covered:
       Creates a standard YAML map.
     * QSet
       Creates a standard YAML list.
+    * QPoint, QPointF, QRect, QRectF, QSize & QSizeF
+      Creates a standard YAML map of values.
       
 Emitter << operator has been overloaded for all of these classes so 
 ```cpp
+    QFont font = QFont("Courier", 10);
+    ...
     YAML::Emitter emitter;
-    emitter << YAML::Key << "key";
-    emitter << YAML::Value << "value";
+    emitter << YAML::Key << "font";
+    emitter << YAML::Value << font;
 ```
-should work correctly.
+should save to the yaml file correctly, and result in the following
+text in the yaml file.
+
+```
+font:
+  family: Courier 10 Pitch
+  bold: false
+  capitalization: 0
+  fixedpitch: false
+  hinting preference: 0
+  italic: false
+  kerning: true
+  letter spacing: 0
+  letter spacing type: 0
+  overline: false
+  point size: 10
+  stretch: 0
+  strikeout: false
+  style: 0
+  style hint: 5
+  style name: ""
+  style strategy: 1
+  underline: false
+  weight: 50
+  word spacing: 0
+```
 
 Usage:
 ======
