@@ -142,19 +142,6 @@ Example YAML file
 ```
 Example Source Code
 ===================
-Save file:
-==========
-```cpp
-    #include <yaml-cpp/yaml.h>
-    #include "qyaml.h"
-
-    QList<int> keys = mRefSquareData.keys();
-    YAML::Node root;
-    root["eastings"] = keys;
-    root["northings"] = mRefSquareData;
-
-    YAML::SaveFile("config.yaml", root, QFile::WriteOnly | QFile::Text | QFile::Truncate);
-```
 
 Load File:
 ==========
