@@ -10,12 +10,15 @@ file as they are quite small files.
 
 There are nine files at present.
 
-    * qyaml.h         == This just wraps the other header files in one header file.
+    * qyaml-cpp.h     == This just wraps the other header files in one header file.
+    * parse.h
     * collection.h
     * emitter.h
     * node.h
     * comment.h
+    * QYamlCpp        == this is just a Qt style wrapper for qyaml-cpp.h
 
+    * parse.cpp
     * collection.cpp  == This is actually empty as everything is done in the header file
     * emitter.cpp     == This is actually empty as everything is done in the header file
     * node.cpp
