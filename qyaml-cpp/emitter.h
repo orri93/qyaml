@@ -17,6 +17,9 @@
 
 namespace YAML {
 
+/*!
+    \brief Emitter operator << overload for QList<T>
+*/
 template<class T>
 inline Emitter& operator<<( Emitter& emitter, const QList<T> v ) {
     Node node;
@@ -24,6 +27,9 @@ inline Emitter& operator<<( Emitter& emitter, const QList<T> v ) {
     return emitter << node;
 }
 
+/*!
+    \brief Emitter operator << overload for QMap(K, V).
+*/
 template<class K, class V>
 inline Emitter& operator<<( Emitter& emitter, const QMap<K, V> v ) {
     Node node;
@@ -31,6 +37,9 @@ inline Emitter& operator<<( Emitter& emitter, const QMap<K, V> v ) {
     return emitter << node;
 }
 
+/*!
+    \brief Emitter operator << overload for QVector<T>
+*/
 template<class T>
 inline Emitter& operator<<( Emitter& emitter, const QVector<T> v ) {
     Node node;

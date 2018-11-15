@@ -284,40 +284,5 @@ operator<<(Node& node, const QSizeF& q)
   node["height"] = q.height();
 }
 
-/*= LoadFile
- * =============================================================================*/
-/*!
-    \brief YAML::LoadFile extension for QString
-*/
-Node
-LoadFile(const QString& filename)
-{
-  return LoadFile(filename.toStdString());
-}
-
-/*= SaveFile
- * =============================================================================*/
-/*!
-    \brief Saves a YAML::Node to a file.
-    \fn YAML::SaveFile(const QString& filename, const Node& node,
-   QIODevice::OpenMode flags)
-
-    Takes two parameters, a QString holding the required filename and the node
-   to write, plus one optional QIODevice::OpenMode flags parameter.
-
-    \see QIODevice::OpenMode
-*/
-void
-SaveFile(const QString& filename, const Node& node, QIODevice::OpenMode flags)
-{
-  Emitter out;
-  out << node;
-  QFile file(filename);
-
-  if (file.open(flags)) {
-    QTextStream os(&file);
-    os << out.c_str();
-  }
-}
 
 } // end namespace YAML

@@ -1,0 +1,14 @@
+#include(compat.qdocconf)
+
+outputformats = HTML
+
+outputdir   = docs
+headerdirs  = qyaml-cpp
+sourcedirs  = qyaml-cpp
+exampledirs = .
+imagedirs   = ./images
+
+sources.fileextensions = "*.cpp *.qdoc *.mm *.qml"
+headers.fileextensions = "*.h *.ch *.h++ *.hh *.hpp *.hxx"
+
+indexes = $QT_INSTALL_DOCS/html/qt.index

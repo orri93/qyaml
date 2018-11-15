@@ -23,7 +23,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-CONFIG += c++11
+CONFIG += c++14
+CONFIG += staticlib
 TARGET = qyaml-cpp
 
 include($$PWD/qyaml-cpp.pri)
@@ -33,15 +34,14 @@ unix {
     INSTALLS += target
 }
 
-DISTFILES += \
-    README.md \
-    qyaml-cpp.pri
+DISTFILES +=
 
-# YAML-CPP
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../yaml-cpp/release/ -lyaml-cpp
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../yaml-cpp/debug/ -lyaml-cppd
-else:unix: LIBS += -L$$OUT_PWD/../yaml-cpp/ -lyaml-cpp
+# YAML-CPP library
+unix|win32: LIBS += -L$$OUT_PWD/../yaml-cpp/ -lyaml-cpp
 
-INCLUDEPATH += $$PWD/../yaml-cpp/include
-DEPENDPATH += $$PWD/../yaml-cpp/include
-DEPENDPATH += $$PWD/../yaml-cpp/src
+INCLUDEPATH += $$PWD/../yaml-cpp
+DEPENDPATH += $$PWD/../yaml-cpp
+
+#win32:!win32-g++: PRE_TARGETDEPS += $$OUT_PWD/../yaml-cpp/yaml-cpp.lib
+#else:unix|win32-g++: PRE_TARGETDEPS += $$OUT_PWD/../yaml-cpp/libyaml-cpp.a
+

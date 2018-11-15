@@ -2,6 +2,7 @@
 #define COMMENT_H
 
 #include <QString>
+#include <QByteArray>
 
 #include <yaml-cpp/yaml.h>
 
@@ -14,23 +15,11 @@ inline _Comment Comment( const QString content ) {
     return _Comment( content.toStdString() );
 }
 
-inline Node NodeComment(const std::string content ) {
-    std::string c;
-    if (content.find("\n") != std::string::npos) {
-        c.append("/*\\n");
-        c.append(content);
-        c.append("\\n*/");
-    } else {
-        c.append("# ");
-        c.append(content);
-    }
-    Node node;
-    node = c;
-    return node;
-}
-
-inline Node NodeComment(const QString content ) {
-    return NodeComment(content.toStdString());
+/*!
+    \brief YAML::Comment extension for QByteArray
+*/
+inline _Comment Comment( const QByteArray content ) {
+    return _Comment( content.toStdString() );
 }
 
 } // end namespace YAML

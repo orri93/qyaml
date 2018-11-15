@@ -51,12 +51,6 @@ operator>>(const Node node, QString q);
 void
 operator<<(Node node, const QString q);
 
-Node
-LoadFile(const QString& filename);
-void
-SaveFile(const QString& filename,
-         const Node& node,
-         QIODevice::OpenMode flags = QIODevice::ReadWrite);
 
 /*= QByteArray
  * ======================================================================================*/
@@ -280,9 +274,9 @@ struct convert<QPointF>
 };
 
 void
-operator>>(const Node node, QPoint q);
+operator>>(const Node node, QPointF q);
 void
-operator<<(Node node, const QPoint q);
+operator<<(Node node, const QPointF q);
 
 /*= QRect
  * ======================================================================================*/

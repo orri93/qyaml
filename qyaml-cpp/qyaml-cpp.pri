@@ -12,7 +12,6 @@
 
 QT += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-QT += xlsx
 
 INCLUDEPATH += $$PWD
 
@@ -20,12 +19,16 @@ SOURCES += \
     collection.cpp \
     comment.cpp \
     emitter.cpp \
-    node.cpp
+    node.cpp \
+    parse.cpp
 
-HEADERS += \
+HEADERS +=  \
+    parse.h \
     collection.h \
     comment.h \
     emitter.h \
-    node.h \
+    node.h
+
+DISTFILES += \
     qyaml-cpp.h \
     QYamlCpp
